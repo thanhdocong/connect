@@ -1,0 +1,33 @@
+<div class="row">
+	<aside class="col-md-8">
+		<div class="center jumbotron">
+    		<%= render 'shared/feed'%>
+		</div>  
+	</aside>
+	<!--set some style to the Entries-->
+	<div class="col-md-4">	
+	<!--check if user have any entries-->
+	<b><font color="GREEN" style="font-family: Verdana; font-size:20pt">Sign up</font></b>
+    <table width="100%" bgcolor="blue" border="0" cellpadding="0" cellspacing="20">
+			<tbody><tr><td width="100%" align="center">
+				<table style="font-family: Verdana; font-size:10pt" width="100%" border="0" cellpadding="0" cellspacing="0"> 
+					<tbody><tr><td colspan="10" align="left">
+					<%= form_for(:session, url: signin_path) do |f| %>
+    				<!--add label eamil and text field email to form-->
+      				<%= f.label :email %>
+      				<%= f.text_field :email, class: 'form-control field_info'%>
+      				<!--add label password and password field password to form-->
+      				<%= f.label :password %>
+      				<%= f.password_field :password, class: 'form-control field_info'%>
+     				<!--add button sign in to form-->
+      				<%= f.submit "Sign in", class: "btn btn-primary btn_commit" %>
+    				<% end %>
+
+    				<p>Need a account? <%= link_to "Sign up now!", signup_path %></p>
+			</tbody></table>
+			</td></tr>
+		</tbody>
+
+</table>
+  </div>
+</div>

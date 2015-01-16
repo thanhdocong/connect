@@ -1,0 +1,37 @@
+<!--Set title to show page-->
+<% provide(:title, @user.name) %>
+<!--Let set some style to our user image and name-->
+<div class="row">
+	<aside class="col-md-4">
+		<section class="user_info">
+			<h1>
+			  <!--use method gravatar_for to show the image of user which location at app/helper/users_helper.rb-->
+			  <%= gravatar_for @user %>
+			  <!--use to show user name-->
+			  <%= @user.name %>
+			</h1>
+		</section>
+		<section class="status">
+			<!--load file at app/view/shared/_status.html.erb-->
+			<%=render 'shared/status'%>
+		</section>
+		<section class="section_follow">
+		<!--show the follow or unfollow button when user signed in-->
+		<%= render 'follow_form' if signed_in?%>
+		<section class="status">
+	</aside>
+	<!--set some style to the Entries-->
+	<div class="col-md-8">	
+	<!--check if user have any entries-->
+    <% if @user.entries.any? %>
+    <!--count user  entries-->
+      <h3><%=@user.name%>'s Entries (<%= @user.entries.count %>)</h3>
+      <ol class="entries">
+      <!--load file at app/view/entries/_entry.html.erb-->
+        <%= render @entries %>
+      </ol>
+      <!--put slide bar to entries-->
+      <%= will_paginate @entries %>
+    <% end %>
+  </div>
+</div>

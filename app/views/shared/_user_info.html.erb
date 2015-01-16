@@ -1,0 +1,8 @@
+<!--show the image of user-->
+<%= link_to gravatar_for(current_user, size: 50), current_user %>
+<!--show the user name-->
+<h1><%= current_user.name %></h1>
+<!--show link for user link to user profile-->
+<span><%= link_to "view my profile", current_user %></span>
+<!--show the entrie the user have-->
+<span><%= pluralize(current_user.entries.count, "entry") %></span>

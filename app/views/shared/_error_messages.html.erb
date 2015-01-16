@@ -1,0 +1,16 @@
+<!--check if object input have any error-->
+<% if object.errors.any? %>
+  <!--set some style to the message error-->
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <!--count the error in form -->
+      The form contains <%= pluralize(object.errors.count, "error") %>.
+    </div>
+    <ul>
+      <!--use loop to show each of in form-->
+    <% object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

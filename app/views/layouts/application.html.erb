@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%=full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <!--Looking for file name _shim.html.erb in app/views/layouts/-->
+  <%= render 'layouts/shim' %>
+</head>
+<body>
+	<!--Start Head of page-->
+	<!--Looking for file name _header.html.erb in app/views/layouts/-->
+	<%= render 'layouts/header' %>
+    <!--End Head of page-->
+    <div class="container">
+      <!--use flash to show message in flash has-->
+      <% flash.each do | message_type, message|%>
+        <!--Alert message to let user know-->
+        <div class="alert alert-<%= message_type%>"><%=message%></div>
+      <% end%>
+      <%= yield %>
+      <!--Looking for file name _footer.html.erb in app/views/layouts/-->
+      <%= render 'layouts/footer' %>
+      <!--show debug if in development Enviroment-->
+     
+    </div>
+</body>
+</html>

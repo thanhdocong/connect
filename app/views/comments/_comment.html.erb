@@ -1,0 +1,22 @@
+<!--link to entry follow its id-->
+<li id="comment-<%= comment.id %>">
+<!--show image of user who post entries-->
+  <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
+  <!--show name of user who post-->
+  <span class="user"><%= link_to comment.user.name, comment.user %></span>
+  <span class="title">
+  <!--show the body of entries-->
+  <%= comment.content %>
+  <% if signed_in? %>
+ 			<!--check user type-->
+      <%entry=comment.entry%>
+ 			<% if current_user?(entry.user) || current_user?(comment.user) %>
+    		| <%= link_to "Delete Comment", comment, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  
+  			<% end %>
+ 		<%end%>
+    <!--show the time posted-->
+    <br><%= time_ago_in_words(comment.created_at) %> ago.
+  
+</li>

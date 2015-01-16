@@ -1,0 +1,24 @@
+<div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+      <!--load file at app/view /shared/_user_info.html.erb-->
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="status">
+        <!--load the file in share folder-->
+        <%=render 'shared/status'%>
+      </section>
+    </aside>
+    <div class="col-md-8">
+
+      <section class="entry_form">
+      <!--load file at app/view /shared/_user_info.html.erb-->
+        <%= render 'shared/entry_form' %>
+      </section>
+      <h3>New Feed</h3>
+      <!--load file from app/view/shared/_feed.html.erb-->
+      <div class="center jumbotron">
+        <%= render 'shared/feed'%>
+      </div>  
+    </div>
+  </div>

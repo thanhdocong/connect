@@ -1,0 +1,21 @@
+<!--Set title to page-->
+<% provide(:title, "Sign in") %>
+<h1 class="account_info">Sign in</h1>
+<!--set some style to form sign in-->
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <!--create form user sign in-->
+    <%= form_for(:session, url: signin_path) do |f| %>
+    	<!--add label eamil and text field email to form-->
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control field_info'%>
+      <!--add label password and password field password to form-->
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control field_info'%>
+      <!--add button sign in to form-->
+      <%= f.submit "Sign in", class: "btn btn-primary btn_commit" %>
+    <% end %>
+
+    <p>Need a account? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+</div>

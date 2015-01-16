@@ -1,0 +1,18 @@
+<!--set page title-->
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+<!--start set slide bar to page-->
+<%= will_paginate %>
+<!--set style-->
+<ul class="users">
+	<!--show user with image-->
+  
+  <!--load file at app/view/users/_user.html.erb-->
+<ul class="users">
+  <%= render @users %>
+</ul>
+
+  
+</ul>
+<!--end set slide bar to page-->
+<%= will_paginate %>

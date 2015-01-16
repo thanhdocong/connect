@@ -1,0 +1,9 @@
+<!--if user have any entries-->
+<% if @feed_items.any? %>
+  <ol class="entries">
+  <!--load file at feed items at app/view/-->
+    <%= render @feed_items %>
+  </ol>
+  <!--add show feed into slide bar-->
+  <%= will_paginate @feed_items %>
+<% end %>

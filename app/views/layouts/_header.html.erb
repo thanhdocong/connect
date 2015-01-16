@@ -1,0 +1,30 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "Connecting me", root_path, id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav pull-right">
+           
+            <!--show this information when user signed in-->
+            <% if signed_in? %>              
+            <!--set style for dropdown  menu-->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b>
+                </a>
+                <!--add drop down items-->
+                <ul class="dropdown-menu">
+
+                  <li><%= link_to "Profile", current_user %></li>
+                  <!--link to page update of user id follow the current id-->
+                  <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to "Sign out", signout_path, method: "delete" %>
+                  </li>
+                </ul>
+              </li>
+              <!--else show this information when user not signed in-->
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>

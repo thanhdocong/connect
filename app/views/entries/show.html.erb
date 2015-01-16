@@ -1,0 +1,47 @@
+<% provide(:title, @entry.title) %>
+<div class="row">
+    <aside class="col-md-4">
+      <% user=User.find(@entry.user_id)%> 
+
+      <h3><%=@entry.title%></h3>
+      <!--show the body of entries-->
+      <%= @entry.body %>
+      <br><%#= image_tag @entry.picture.url if @entry.picture? %>
+        <section>          
+          <!--use to show user name-->
+          Post by :<%= link_to user.name, user %>
+        </section>      
+        Posted date :<%= Date.parse (@entry.created_at.to_s) %>
+        
+      <%if signed_in?%>
+        <% if user.following?(current_user) ||current_user?(user) || current_user.following?(user)%>      
+        <section class="comment_form">
+          <!--load file at app/view /shared/_user_info.html.erb-->
+          <%= render 'shared/comment_form' %>      
+        </section>
+        <%else%>
+        <h6> * Connot make a comment unless you follow this user</h6>
+        <% end %> 
+      <%else%> 
+        <h6>Connot make a comment unless you <%= link_to "Sign in", signin_path %> or<%= link_to "Sign up", signup_path %></h6>
+      <%end%>
+    </aside>
+    <div class="col-md-8">
+
+        <ol class="entries">
+          <!--load file at app/view/entries/_entry.html.erb-->
+          <%= render @comments %>
+        </ol>
+      <!--put slide bar to entries-->
+      <%= will_paginate @comments %>   
+    </div>
+  </div>
+
+    		
+         
+        
+      
+ 
+   
+
+      <!--if current user is not user -->

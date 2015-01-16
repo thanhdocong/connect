@@ -1,0 +1,6 @@
+<% provide(:title, "Home") %>
+<% if signed_in? %>
+  <%= render 'home_pages/login' %>
+<% else %>
+	<%= render 'home_pages/anonymous' %>
+<%end%>
